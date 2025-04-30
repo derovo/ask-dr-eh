@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ask Dr. Eh</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>LET ME SEE WHAT'S YOUR PROBLEM.</h1>
+      <img src="dr-eh.png" alt="Dr. Eh at desk" style="width: 500px;">
+      <button class="scroll-btn">Scroll Down</button>
+    </div>
+  </section>
+<section id="submission">
+  <h2>Submit your question below and prepare to be roasted.</h2>
+<form id="questionForm" action="#" method="post">
+  <textarea 
+    id="questionInput"  
+    name="submission" 
+    placeholder="Type your nonsense here..." 
+    required
+  ></textarea>
+  
+  <button type="submit">Submit and Regret</button>
+  <img src="q.png" alt="Dr. Eh holding a box of milk" style="width: 500px;">
+</form>
+
+<div id="questionsContainer"> <!-- changed this ID -->
+  <h3>Anonymous Submissions:</h3>
+</div>
+
+<div id="popup" class="hidden">
+  <div class="popup-content">
+    <p id="userQuestion"></p>
+    <p id="drEhReply"></p>
+    <button id="closePopup">Close</button>
+  </div>
+</div>
+
+
+  <script src="script.js"></script>
+</section>
+
+<script>
+  const form = document.getElementById('questionForm');
+  const input = document.getElementById('questionInput');
+  const container = document.getElementById('questionsContainer');
+
+  window.onload = function () {
+    const saved = JSON.parse(localStorage.getItem('questions')) || [];
+    saved.forEach(q => appendQuestion(q));
+  };
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const text = input.value.trim();
+    if (text !== "") {
+      appendQuestion(text);
+      saveQuestion(text);
+      showPopup(text);
+      input.value = "";
+    }
+  });
+
+  function appendQuestion(text) {
+    const li = document.createElement('li');
+    li.textContent = text;
+    container.appendChild(li);
+  }
+
+  function saveQuestion(text) {
+    const current = JSON.parse(localStorage.getItem('questions')) || [];
+    current.push(text);
+    localStorage.setItem('questions', JSON.stringify(current));
+  }
+const popup = document.getElementById('popup');
+const userQuestionEl = document.getElementById('userQuestion');
+const drEhReplyEl = document.getElementById('drEhReply');
+const closeBtn = document.getElementById('closePopup');
+
+closeBtn.addEventListener('click', () => {
+  popup.classList.add('hidden');
+});
+
+function showPopup(text) {
+  userQuestionEl.textContent = `"You asked: ${text}"`;
+  drEhReplyEl.textContent = getRandomRoast();
+  popup.classList.remove('hidden');
+}
+
+function getRandomRoast() {
+  const roasts = [
+    "That's the dumbest thing I've read all week.",
+    "Even my milk is more intelligent.",
+    "Try again. But this time, with a brain.",
+    "You need therapy. And a helmet.",
+    "This better be a prank.",
+    "You’re banned from thinking for 24 hours."
+  ];
+  return roasts[Math.floor(Math.random() * roasts.length)];
+}
+
+</script>
+
+</body>
+</html>

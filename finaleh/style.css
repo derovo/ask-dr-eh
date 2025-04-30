@@ -1,0 +1,117 @@
+body {
+  margin: 0;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background-color: #ffffff;
+  color: #000;
+  text-align: center;
+}
+
+.hero {
+  padding: 60px 20px;
+}
+
+.hero-content img {
+  width: 200px;
+  margin-bottom: 20px;
+}
+
+.hero-content h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.scroll-btn {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: black;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.scroll-btn:hover {
+  background-color: red;
+  transform: rotate(-2deg) scale(1.05);
+}
+#submission {
+  text-align: center;
+  padding: 40px;
+}
+
+textarea {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+  max-width: 600px;
+  height: 150px;
+  padding: 10px;
+  font-size: 16px;
+  font-family: monospace;
+  border: 2px solid black;
+  border-radius: 5px;
+  resize: none;
+  margin-bottom: 15px;
+}
+
+button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: black;
+  color: white;
+  padding: 10px 25px;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: red;
+  transform: rotate(-2deg) scale(1.05);
+}
+#questionList {
+  margin-top: 30px;
+  text-align: left;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: monospace;
+}
+
+#questionsContainer li {
+  margin-bottom: 10px;
+  border-bottom: 1px dashed gray;
+  padding: 5px;
+}
+
+#popup {
+  position: fixed;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  background: #fff;
+  padding: 2rem;
+  border: 2px solid #000;
+  z-index: 1000;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
+}
+
+.popup-content {
+  background: white;
+  padding: 20px;
+  text-align: center;
+  border-radius: 8px;
+  max-width: 400px;
+}
+
+.hidden {
+  display: none;
+}
+
